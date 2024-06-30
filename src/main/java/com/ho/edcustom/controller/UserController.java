@@ -21,5 +21,7 @@ public class UserController {
     @GetMapping("/hello")
     public String hellocontroller(){
         return "hello world";
+
     }
 }
+
