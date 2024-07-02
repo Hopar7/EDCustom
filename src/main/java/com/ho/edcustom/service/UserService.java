@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    public void registerUser(String name,String password){
+    public void createUser(String userid,String password){
         userRepository.save(User.builder()
-                .name(name)
-                .password(password).build());
+                .userid(userid)
+                .password(password)
+                .build());
     }
 }

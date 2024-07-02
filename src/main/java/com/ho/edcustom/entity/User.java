@@ -1,7 +1,6 @@
 package com.ho.edcustom.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,10 +11,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User {
     @Id
     private Long id;
-    String name;
+
+    @Column(unique = true)
+    String userid;
+
     String password;
 
 }

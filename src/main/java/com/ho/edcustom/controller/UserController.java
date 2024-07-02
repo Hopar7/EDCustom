@@ -15,7 +15,7 @@ public class UserController {
     @PostMapping("/register")
     public void register(@RequestParam String name,@RequestParam String password)
     {
-        userService.registerUser(name,password);
+        userService.createUser(name,password);
     }
 
     @GetMapping("/hello")
