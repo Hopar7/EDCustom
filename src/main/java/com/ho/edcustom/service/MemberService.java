@@ -13,11 +13,18 @@ import static java.util.regex.Pattern.matches;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final JwtTokenProvider jwtTokenProvider;
-    public void createMember(String userid,String password){
+    public void createMember(String name,String userid,String password){
         memberRepository.save(Member.builder()
+                .name(name)
                 .userid(userid)
                 .password(password)
                 .build());
+
+    }
+
+    public boolean alreadyUsingid(String userid)
+    {
+        return memberRepository.findByUserid(userid).isPresent();
 
     }
 

@@ -17,6 +17,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    String name;
+
     @Column(unique = true)
     String userid;
 
