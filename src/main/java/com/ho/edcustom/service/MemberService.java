@@ -13,23 +13,23 @@ import static java.util.regex.Pattern.matches;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final JwtTokenProvider jwtTokenProvider;
-    public void createMember(String name,String userid,String password){
+    public void createMember(String name,String email,String password){
         memberRepository.save(Member.builder()
                 .name(name)
-                .userid(userid)
+                .email(email)
                 .password(password)
                 .build());
 
     }
 
-    public boolean alreadyUsingid(String userid)
+    public boolean alreadyUsingemail(String email)
     {
-        return memberRepository.findByUserid(userid).isPresent();
+        return memberRepository.findByEmail(email).isPresent();
 
     }
 
-    public String loginMember(String userid, String password) {
-        Member member = memberRepository.findByUserid(userid)
+    public String loginMember(String email, String password) {
+        Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Invalid credentials"));
         if (!matches(password, member.getPassword())) {
             throw new RuntimeException("Invalid credentials");

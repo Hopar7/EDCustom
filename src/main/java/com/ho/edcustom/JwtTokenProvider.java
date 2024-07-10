@@ -37,7 +37,7 @@ public class JwtTokenProvider {
     }
     private Map<String, Object> createClaims(Member member) { // payload
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userid",member.getUserid());
+        claims.put("email",member.getEmail());
         claims.put("password",member.getPassword());
         return claims;
     }
@@ -67,7 +67,7 @@ public class JwtTokenProvider {
         }
         return null;
     }
-    public String getUserIdFromToken(String token) {
-        return (String) getClaims(token).get("userid");
+    public String getEamilFromToken(String token) {
+        return (String) getClaims(token).get("email");
     }
 }

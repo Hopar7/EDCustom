@@ -20,8 +20,13 @@ public class Member {
     String name;
 
     @Column(unique = true)
-    String userid;
+    String email;
 
     String password;
 
+    public Member(String name, String email, String password) { //id 값 제외하고 받는 생성자
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 }

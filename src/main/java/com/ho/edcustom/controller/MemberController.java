@@ -16,24 +16,24 @@ public class MemberController {
 //    private LoginResponseDto loginResponseDto;
 
     @PostMapping("/register")
-    public void register(@RequestParam String name,@RequestParam String userid,@RequestParam String password)
+    public void register(@RequestParam String name,@RequestParam String email,@RequestParam String password)
     {
-        userService.createMember(name,userid,password);
+        userService.createMember(name,email,password);
     }
     @PostMapping("/login")
-    public String login(@RequestParam String name,@RequestParam String password) {
-        return userService.loginMember(name,password);
+    public String login(@RequestParam String email,@RequestParam String password) {
+        return userService.loginMember(email,password);
     }
     @PostMapping("/finduserbytoken")
     public String findUserByToken(@RequestParam String token)
     {
-        return jwtTokenProvider.getUserIdFromToken(token);
+        return jwtTokenProvider.getEamilFromToken(token);
     }
 
-    @PostMapping("/alreadyusingid")
-    public boolean alreadyUsingId(@RequestParam String userid)
+    @PostMapping("/alreadyusingemail")
+    public boolean alreadyUsingEmail(@RequestParam String email)
     {
-        return userService.alreadyUsingid(userid);
+        return userService.alreadyUsingemail(email);
     }
 //@PostMapping("/register")
 //    public void register(@RequestBody MemberDTO memberDTO) {
