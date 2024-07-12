@@ -43,9 +43,9 @@ public class KakaoService {
 
     @Value("${kakao.user-info-uri}")
     private String userInfoUri;
-    public String kakaoLogin(KakaoLogincodeDTO DTO) throws JsonProcessingException {
+    public String kakaoLogin(String DTO) throws JsonProcessingException {
         // 1. "인가 코드"로 "액세스 토큰" 요청
-        String accessToken = getAccessToken(DTO.getCode());
+        String accessToken = getAccessToken(DTO);
 
         // 2. 토큰으로 카카오 API 호출
         SocialUserInfoDto kakaoUserInfo = getKakaoUserInfo(accessToken);
