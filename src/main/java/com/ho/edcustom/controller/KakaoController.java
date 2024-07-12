@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class KakaoController {
     private final KakaoService kakaoService;
-    @GetMapping("/user/kakao/login")
+    @PostMapping("/user/kakao/login")
     public String kakaoLogin(@RequestParam String code) throws JsonProcessingException {
         return kakaoService.kakaoLogin(code);
     }
