@@ -16,7 +16,7 @@ public class KakaoController {
 //    public String kakaoLogin(@RequestBody KakaoRequestDTO DTO) throws JsonProcessingException {
 //        return kakaoService.kakaoLogin(DTO.getCode()); //400에러
 //    }
-@PostMapping("/user/kakao/login")
+@GetMapping("/user/kakao/login")
 public LoginResponseDto kakaoLogin(@RequestParam String code) throws JsonProcessingException {
     LoginResponseDto DTO = new LoginResponseDto(kakaoService.kakaoLogin(code));
     return DTO;
