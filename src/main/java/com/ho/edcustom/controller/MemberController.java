@@ -21,8 +21,8 @@ public class MemberController {
         userService.createMember(name,email,password);
     }
     @PostMapping("/login")
-    public String login(@RequestParam String email,@RequestParam String password) {
-        return userService.loginMember(email,password);
+    public String login(@RequestBody LoginRequestDto DTO /*String email,@RequestParam String password*/) {
+        return userService.loginMember(DTO.getEmail(),DTO.getPassword());
     }
     @PostMapping("/finduserbytoken")
     public String findUserByToken(@RequestParam String token)

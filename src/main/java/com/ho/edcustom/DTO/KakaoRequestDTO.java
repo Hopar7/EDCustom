@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class KakaoLogincodeDTO {
+public class KakaoRequestDTO {
     private String code;
-    public KakaoLogincodeDTO(String code)
+    public KakaoRequestDTO(String code)
     {
         this.code=code;
     }
