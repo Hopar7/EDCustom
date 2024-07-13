@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class KakaoController {
     private final KakaoService kakaoService;
 
+    @ResponseBody
     @GetMapping("/user/kakao/login")
-    public String kakaoLogin(@RequestBody KakaoRequestDTO DTO) throws JsonProcessingException {
-        return kakaoService.kakaoLogin(DTO.getCode()); //400에러
+    public String kakaoLogin(@RequestParam String DTO) throws JsonProcessingException {
+        return kakaoService.kakaoLogin(DTO); //400에러
     }
 
 //@PostMapping("/user/kakao/login")
