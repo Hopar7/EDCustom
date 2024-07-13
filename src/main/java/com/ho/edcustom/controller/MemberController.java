@@ -21,9 +21,10 @@ public class MemberController {
         userService.createMember(name,email,password);
     }
     @PostMapping("/login")
-    public LoginResponseDto login(@RequestBody LoginRequestDto DTO /*String email,@RequestParam String password*/) {
-        LoginResponseDto Response = new LoginResponseDto(userService.loginMember(DTO.getEmail(),DTO.getPassword()));
-        return Response;
+    public String login(@RequestBody LoginRequestDto DTO /*String email,@RequestParam String password*/) {
+        //LoginResponseDto Response = new LoginResponseDto(userService.loginMember(DTO.getEmail(),DTO.getPassword()));
+        //return Response;
+        return userService.loginMember(DTO.getEmail(),DTO.getPassword());
     }
     @PostMapping("/finduserbytoken")
     public String findUserByToken(@RequestParam String token)
