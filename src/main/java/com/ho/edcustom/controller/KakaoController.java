@@ -1,7 +1,5 @@
 package com.ho.edcustom.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ho.edcustom.DTO.KakaoRequestDTO;
-import com.ho.edcustom.DTO.LoginResponseDto;
 import com.ho.edcustom.service.KakaoService;
 
 import lombok.RequiredArgsConstructor;

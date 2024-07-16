@@ -1,8 +1,9 @@
 package com.ho.edcustom.controller;
 
-import com.ho.edcustom.DTO.LoginRequestDto;
-import com.ho.edcustom.DTO.LoginResponseDto;
-import com.ho.edcustom.JwtTokenProvider;
+import com.ho.edcustom.DTO.LoginRequestDTO;
+import com.ho.edcustom.DTO.LoginResponseDTO;
+import com.ho.edcustom.DTO.RegisterRequestDTO;
+import com.ho.edcustom.Jwt.JwtTokenProvider;
 import com.ho.edcustom.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,17 +13,15 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
     private final MemberService userService;
     private final JwtTokenProvider jwtTokenProvider;
-//    private LoginRequestDto loginRequestDto;
-//    private LoginResponseDto loginResponseDto;
 
     @PostMapping("/register")
-    public void register(@RequestParam String name,@RequestParam String email,@RequestParam String password)
+    public void register(@RequestBody RegisterRequestDTO DTO)
     {
-        userService.createMember(name,email,password);
+        userService.createMember(DTO.getName(),DTO.getEmail(), DTO.getPassword());
     }
     @PostMapping("/login")
-    public LoginResponseDto login(@RequestBody LoginRequestDto DTO /*String email,@RequestParam String password*/) {
-        LoginResponseDto Response = new LoginResponseDto(userService.loginMember(DTO.getEmail(),DTO.getPassword()));
+    public LoginResponseDTO login(@RequestBody LoginRequestDTO DTO) {
+        LoginResponseDTO Response = new LoginResponseDTO(userService.loginMember(DTO.getEmail(),DTO.getPassword()));
         return Response;
     }
     @PostMapping("/finduserbytoken")
@@ -36,16 +35,6 @@ public class MemberController {
     {
         return userService.alreadyUsingemail(email);
     }
-//@PostMapping("/register")
-//    public void register(@RequestBody MemberDTO memberDTO) {
-//        userService.createMember(memberDTO.getUserid(), memberDTO.getPassword());
-//    }
-//
-//    @PostMapping("/login")
-//    public MemberDTO login(@RequestBody MemberDTO memberDTO) {
-//        return userService.login(memberDTO.getUserid(), memberDTO.getPassword());
-//    }
-
 
     @GetMapping("/hello")
     public String hellocontroller(){

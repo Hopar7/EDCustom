@@ -1,4 +1,4 @@
-package com.ho.edcustom;
+package com.ho.edcustom.Jwt;
 
 import com.ho.edcustom.entity.Member;
 import io.jsonwebtoken.*;

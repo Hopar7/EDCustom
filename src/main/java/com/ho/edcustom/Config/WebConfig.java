@@ -1,5 +1,6 @@
-package com.ho.edcustom;
+package com.ho.edcustom.Config;
 
+import com.ho.edcustom.Interceptor.Interceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

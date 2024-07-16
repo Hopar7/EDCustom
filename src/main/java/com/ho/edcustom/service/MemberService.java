@@ -1,6 +1,6 @@
 package com.ho.edcustom.service;
 
-import com.ho.edcustom.JwtTokenProvider;
+import com.ho.edcustom.Jwt.JwtTokenProvider;
 import com.ho.edcustom.entity.Member;
 import com.ho.edcustom.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,6 @@ public class MemberService {
                 .email(email)
                 .password(password)
                 .build());
-
     }
 
     public boolean alreadyUsingemail(String email)
