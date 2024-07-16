@@ -139,9 +139,11 @@ public class KakaoService {
             //String encodedPassword = passwordEncoder.encode(password);
 
             //String profile = "https://ossack.s3.ap-northeast-2.amazonaws.com/basicprofile.png";
-
-            kakaoUser = new Member(nickname, kakaoEmail, password);
-            memberRepository.save(kakaoUser);
+            memberRepository.save(Member.builder()
+                    .name(nickname)
+                    .email(kakaoEmail)
+                    .password(password)
+                    .build());
 
         }
         return kakaoUser;

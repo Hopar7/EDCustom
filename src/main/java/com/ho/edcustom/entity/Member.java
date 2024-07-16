@@ -23,10 +23,4 @@ public class Member {
     String email;
 
     String password;
-
-    public Member(String name, String email, String password) { //id 값 제외하고 받는 생성자
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
 }
