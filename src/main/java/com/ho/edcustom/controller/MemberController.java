@@ -30,10 +30,9 @@ public class MemberController {
     }
 
     @PostMapping("/alreadyusingemail")
-    public String alreadyUsingEmail(@RequestBody EmailRequestDTO DTO)
+    public boolean alreadyUsingEmail(@RequestBody EmailRequestDTO DTO)
     {
         return memberService.alreadyUsingemail(DTO.getEmail());
-
     }
 
     @GetMapping("/hello")

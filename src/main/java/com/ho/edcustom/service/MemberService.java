@@ -22,14 +22,9 @@ public class MemberService {
 
     }
 
-    public String alreadyUsingemail(String email)
+    public boolean alreadyUsingemail(String email)
     {
-
-        if(memberRepository.findByEmail(email).isPresent())
-        {
-            return "true";
-        }
-        else return "false";
+        return memberRepository.findByEmail(email).isPresent();
 
     }
 
