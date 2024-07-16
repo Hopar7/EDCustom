@@ -15,7 +15,7 @@ public class KakaoController {
     private final KakaoService kakaoService;
 
     @ResponseBody
-    @PostMapping("/user/kakao/login")
+    @PostMapping("/social/kakao/login")
     public LoginResponseDTO kakaoLogin(@RequestBody KakaoLoginRequestDTO DTO) throws JsonProcessingException {
         LoginResponseDTO Response = new LoginResponseDTO(kakaoService.kakaoLogin(DTO.getCode()));
         return Response;
