@@ -3,10 +3,10 @@ package com.ho.edcustom.DTO;
 import lombok.Getter;
 
 @Getter
-public class RequestTokenDTO {
+public class TokenRequestDTO {
     private String token;
 
-    public RequestTokenDTO(String token) {
+    public TokenRequestDTO(String token) {
         this.token = token;
     }
 }

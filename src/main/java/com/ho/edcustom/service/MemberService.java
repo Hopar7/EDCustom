@@ -19,6 +19,7 @@ public class MemberService {
                 .email(email)
                 .password(password)
                 .build());
+
     }
 
     public boolean alreadyUsingemail(String email)
