@@ -23,12 +23,7 @@ public class MemberController {
         LoginResponseDTO Response = new LoginResponseDTO(memberService.loginMember(DTO.getEmail(),DTO.getPassword()));
         return Response;
     }
-    @PostMapping("/findemailbytoken")
-    public EmailResponseDTO findEmailByToken(@RequestBody TokenRequestDTO DTO)
-    {
-        EmailResponseDTO Response = new EmailResponseDTO(jwtTokenProvider.getEamilFromToken(DTO.getToken()));
-        return Response;
-    }
+
     @PostMapping("/findbodybytoken")
     public String findBodyByToken(@RequestBody TokenRequestDTO DTO)
     {
