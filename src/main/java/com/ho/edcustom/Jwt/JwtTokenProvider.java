@@ -1,5 +1,6 @@
 package com.ho.edcustom.Jwt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ho.edcustom.entity.Member;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -71,7 +72,13 @@ public class JwtTokenProvider {
     public String getEamilFromToken(String token) {
         return (String) getClaims(token).get("email");
     }
-    public Claims getClaimsFromToken(String token) {
-        return getClaims(token);
+    public String getClaimsFromToken(String token) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.writeValueAsString(getClaims(token));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

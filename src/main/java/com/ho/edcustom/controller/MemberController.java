@@ -30,10 +30,10 @@ public class MemberController {
         return Response;
     }
     @PostMapping("/findbodybytoken")
-    public Claims findBodyByToken(@RequestBody TokenRequestDTO DTO)
+    public String findBodyByToken(@RequestBody TokenRequestDTO DTO)
     {
-        Claims claims =jwtTokenProvider.getClaimsFromToken(DTO.getToken());
-        return claims;
+        return jwtTokenProvider.getClaimsFromToken(DTO.getToken());
+
     }
 
     @PostMapping("/alreadyusingemail")
