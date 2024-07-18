@@ -37,6 +37,7 @@ public class JwtTokenProvider {
     }
     private Map<String, Object> createClaims(Member member) { // payload
         Map<String, Object> claims = new HashMap<>();
+        claims.put("name",member.getName());
         claims.put("email",member.getEmail());
         claims.put("password",member.getPassword());
         return claims;
@@ -69,5 +70,8 @@ public class JwtTokenProvider {
     }
     public String getEamilFromToken(String token) {
         return (String) getClaims(token).get("email");
+    }
+    public Claims getClaimsFromToken(String token) {
+        return getClaims(token);
     }
 }

@@ -3,6 +3,7 @@ package com.ho.edcustom.controller;
 import com.ho.edcustom.DTO.*;
 import com.ho.edcustom.Jwt.JwtTokenProvider;
 import com.ho.edcustom.service.MemberService;
+import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +23,17 @@ public class MemberController {
         LoginResponseDTO Response = new LoginResponseDTO(memberService.loginMember(DTO.getEmail(),DTO.getPassword()));
         return Response;
     }
-    @PostMapping("/finduserbytoken")
-    public EmailResponseDTO findUserByToken(@RequestBody TokenRequestDTO DTO)
+    @PostMapping("/findemailbytoken")
+    public EmailResponseDTO findEmailByToken(@RequestBody TokenRequestDTO DTO)
     {
         EmailResponseDTO Response = new EmailResponseDTO(jwtTokenProvider.getEamilFromToken(DTO.getToken()));
         return Response;
+    }
+    @PostMapping("/findbodybytoken")
+    public Claims findBodyByToken(@RequestBody TokenRequestDTO DTO)
+    {
+        Claims claims =jwtTokenProvider.getClaimsFromToken(DTO.getToken());
+        return claims;
     }
 
     @PostMapping("/alreadyusingemail")
