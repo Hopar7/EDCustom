@@ -1,4 +1,4 @@
-package com.ho.edcustom.controller;
+/*package com.ho.edcustom.controller;
 
 
 import com.ho.edcustom.service.ChatAiService;
@@ -15,5 +15,5 @@ public class ChatController {
     public String getResponseFromChatGpt(String prompt) {
         return chatAiService.chat(prompt);
     }
-}
+}*/
 
