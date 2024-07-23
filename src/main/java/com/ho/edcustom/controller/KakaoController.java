@@ -1,8 +1,7 @@
 package com.ho.edcustom.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ho.edcustom.DTO.KakaoLoginRequestDTO;
-import com.ho.edcustom.DTO.LoginRequestDTO;
-import com.ho.edcustom.DTO.LoginResponseDTO;
+import com.ho.edcustom.DTO.Request.KakaoLoginRequest;
+import com.ho.edcustom.DTO.Response.LoginResponse;
 import com.ho.edcustom.service.KakaoService;
 
 import lombok.RequiredArgsConstructor;
@@ -16,8 +15,8 @@ public class KakaoController {
 
     @ResponseBody
     @PostMapping("/social/kakao/login")
-    public LoginResponseDTO kakaoLogin(@RequestBody KakaoLoginRequestDTO DTO) throws JsonProcessingException {
-        LoginResponseDTO Response = new LoginResponseDTO(kakaoService.kakaoLogin(DTO.getCode()));
+    public LoginResponse kakaoLogin(@RequestBody KakaoLoginRequest DTO) throws JsonProcessingException {
+        LoginResponse Response = new LoginResponse(kakaoService.kakaoLogin(DTO.getCode()));
         return Response;
     }
 

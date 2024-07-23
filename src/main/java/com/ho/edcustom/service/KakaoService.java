@@ -3,7 +3,7 @@ package com.ho.edcustom.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ho.edcustom.DTO.SocialUserInfoDTO;
+import com.ho.edcustom.DTO.SocialUserInfo;
 import com.ho.edcustom.Jwt.JwtTokenProvider;
 import com.ho.edcustom.entity.Member;
 import com.ho.edcustom.repository.MemberRepository;
@@ -44,7 +44,7 @@ public class KakaoService {
         String accessToken = getAccessToken(DTO);
 
         // 2. 토큰으로 카카오 API 호출
-        SocialUserInfoDTO kakaoUserInfo = getKakaoUserInfo(accessToken);
+        SocialUserInfo kakaoUserInfo = getKakaoUserInfo(accessToken);
 
         // 3. 카카오ID로 회원가입 처리
         Member kakaoUser = registerKakaoUserIfNeed(kakaoUserInfo);
@@ -82,7 +82,7 @@ public class KakaoService {
         return jsonNode.get("access_token").asText();
     }
     // 2. 토큰으로 카카오 API 호출
-    private SocialUserInfoDTO getKakaoUserInfo(String accessToken) throws JsonProcessingException {
+    private SocialUserInfo getKakaoUserInfo(String accessToken) throws JsonProcessingException {
         // HTTP Header 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + accessToken);
@@ -122,10 +122,10 @@ public class KakaoService {
         }
 
 
-        return new SocialUserInfoDTO(id, nickname, email);
+        return new SocialUserInfo(id, nickname, email);
     }
     // 3. 카카오ID로 회원가입 처리
-    private Member registerKakaoUserIfNeed (SocialUserInfoDTO kakaoUserInfo) {
+    private Member registerKakaoUserIfNeed (SocialUserInfo kakaoUserInfo) {
         // DB 에 중복된 email이 있는지 확인
         String kakaoEmail = kakaoUserInfo.getEmail();
         String nickname = kakaoUserInfo.getNickname();
