@@ -1,14 +1,14 @@
-package com.ho.edcustom.DTO;
+package com.ho.edcustom.DTO.Request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 @Getter
 @NoArgsConstructor
-public class TokenRequestDTO {
+public class TokenRequest {
     private String token;
 
-    public TokenRequestDTO(String token) {
+    public TokenRequest(String token) {
         this.token = token;
     }
 }

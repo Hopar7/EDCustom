@@ -1,14 +1,14 @@
-package com.ho.edcustom.DTO;
+package com.ho.edcustom.DTO.Request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 @Getter
 @NoArgsConstructor
-public class EmailRequestDTO {
+public class EmailRequest {
     private String email;
 
-    public EmailRequestDTO(String email) {
+    public EmailRequest(String email) {
         this.email = email;
     }
 }

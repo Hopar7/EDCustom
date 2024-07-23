@@ -1,15 +1,14 @@
-package com.ho.edcustom.DTO;
+package com.ho.edcustom.DTO.Request;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-public class RegisterRequestDTO {
+public class RegisterRequest {
     private String name;
     private String email;
     private String password;
 
-    public RegisterRequestDTO(String name, String email, String password) {
+    public RegisterRequest(String name, String email, String password) {
         this.name =name;
         this.email = email;
         this.password = password;
