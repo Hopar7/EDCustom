@@ -1,13 +1,11 @@
 package com.ho.edcustom.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.Map;
 
@@ -36,7 +34,9 @@ public class OpenAiService {
                 "3. 메시지의 두 번째 부분이 형용사인 경우: 해당 형용사와 일치하는 축을 추천.\n" +
                 "4. 두 번째 부분이 특정 축에 대한 언급인 경우: 해당 축과 일치하는 축을 추천.\n" +
                 "\n" +
-                "예를 들어, \"Message\", (이쁘고 조용한) 키보드 추천해줘 라고 하였을 때, 앞의 형용사는 키캡을, 뒤의 형용사는 스위치를 추천해 주세요. 한 번의 답변에 하나의 키캡과 하나의 축을 추천하고, 각 추천 항목마다 한 줄 평을 포함해 간결하게 답변해주세요.\n");
+                "만약 앞과 뒤의 형용사가 키보드 추천에 관련된 형용사가 아닐 경우 \"고려할 형식이 아닙니다.\"라고 사용자에게 전달하고, 랜덤으로 키캡과 축을 추천해 주세요.\n" +
+                "\n" +
+                "한 번의 답변에 하나의 키캡과 하나의 축을 추천하고, 각 추천 항목마다 한 줄 평을 포함해 간결하게 답변해주세요.\n");
 
         Prompt prompt = promptTemplate.create(Map.of("Message", message));
         return Map.of("generation", chatModel.call(prompt).getResult());
