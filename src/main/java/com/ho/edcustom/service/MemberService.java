@@ -4,6 +4,8 @@ import com.ho.edcustom.Jwt.JwtTokenProvider;
 import com.ho.edcustom.entity.Member;
 import com.ho.edcustom.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import static java.util.regex.Pattern.matches;
@@ -13,11 +15,12 @@ import static java.util.regex.Pattern.matches;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
     public void createMember(String name,String email,String password){
         memberRepository.save(Member.builder()
                 .name(name)
                 .email(email)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .build());
 
     }
@@ -31,7 +34,7 @@ public class MemberService {
     public String loginMember(String email, String password) {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Invalid credentials"));
-        if (!matches(password, member.getPassword())) {
+        if (!passwordEncoder.matches(password, member.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
         return jwtTokenProvider.generateToken(member);
